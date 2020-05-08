@@ -1,17 +1,17 @@
-// Create a new date instance dynamically with JS
-const d = new Date();
-const newDate = (d.getMonth() + 1) + '.' + d.getDate() + '.' + d.getFullYear();
-
-// Personal API Key for OpenWeatherMap API
-const apiKey = "&appid=66c2354315610ef35e7c8e5f5fe28b4d";
-let webApi = "http://api.openweathermap.org/data/2.5/weather";
-const tempUnit = "&units=metric";
-
-// Event listener to add function to existing HTML DOM element
-document.getElementById('generate').addEventListener('click', generateEntry);
-
 /* Function called by event listener */
-function generateEntry(e) {
+function handleSubmit(event) {
+    event.preventDefault();
+
+    // Create a new date instance dynamically with JS
+    const d = new Date();
+    const newDate = (d.getMonth() + 1) + '.' + d.getDate() + '.' + d.getFullYear();
+
+    // Personal API Key for OpenWeatherMap API
+    const apiKey = "&appid=66c2354315610ef35e7c8e5f5fe28b4d";
+    let webApi = "http://api.openweathermap.org/data/2.5/weather";
+    const tempUnit = "&units=metric";
+
+
     const zipCode = document.getElementById("zip").value;
     const url = `${webApi}?zip=${zipCode}${tempUnit}${apiKey}`;
     console.log(url);
@@ -30,12 +30,7 @@ function generateEntry(e) {
 
             // Alert user if promise is rejected due to invalid Zipcode
             , (error) => {
-                if (error === "feeling") {
-                    alert("Please enter you feelings!");
-                }
-                else {
-                    alert("Please enter a valid zip code!");
-                }
+                alert("Please enter a valid zip code!");
             })
         .then(function () {
             updateUI('/all')
@@ -48,11 +43,6 @@ const getData = async (url = '') => {
     try {
         const allData = await response.json();
         const temp = allData.main.temp;
-        const feelings = "none"
-        if (feelings === "") {
-            const message = "feeling"
-            throw message;
-        }
         return temp;
     } catch (error) {
         console.log("error: ", error);
@@ -89,11 +79,12 @@ const updateUI = async (url = '') => {
         const entry = serverData.entryData;
         const date = document.getElementById('date');
         const temp = document.getElementById('temp');
-        const content = document.getElementById('content');
         date.innerHTML = `<strong>Date:</strong> ${entry.date}`;
         temp.innerHTML = `<strong>Temperature:</strong> ${entry.temperature}`;
-        content.innerHTML = `<strong>Feelings:</strong> ${entry.feelings}`;
     } catch (error) {
         console.log("error", error);
     }
 }
+
+
+export { handleSubmit }

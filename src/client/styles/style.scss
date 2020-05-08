@@ -1,7 +1,11 @@
+@font-face {
+    font-family: "Oswald";
+    src: url("../fonts/Oswald-VariableFont_wght.ttf") format("truetype");
+}
 body {
     background: #fffff8;
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-}
+} 
 
 #app {
     display: grid;
@@ -12,7 +16,7 @@ body {
     justify-content: center;
     grid-gap: 1em;
     font-size: 20px;
-    font-family: 'Oswald', sans-serif;
+    font-family: "Oswald", sans-serif;
     padding: 20px;
     overflow: auto;
     height: 100vh;
@@ -27,7 +31,7 @@ body {
 }
 
 .entry {
-    background: rgba(59, 74, 107, .4);
+    background: rgba(59, 74, 107, 0.4);
     display: flex;
     flex: 1;
     min-height: min-content;
@@ -60,12 +64,14 @@ label {
 input {
     display: block;
     height: 60px;
-    width: 50vw;
+    width: 70vw;
     background: #22b2da;
     color: #f0d43a;
     font-size: 20px;
-    font-family: 'Oswald', sans-serif;
+    font-family: "Oswald", sans-serif;
     border: none;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 button {
@@ -74,9 +80,17 @@ button {
     background: #3b4a6b;
     color: #f0d43a;
     font-size: 26px;
-    font-family: 'Oswald', sans-serif;
+    font-family: "Oswald", sans-serif;
+    border-radius: 5px;
     border: none;
-    box-shadow: 2px 4px 5px #444;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    &:active {
+        opacity: 0.8;
+    }
 }
 
 h1 {
@@ -87,12 +101,15 @@ textarea {
     background: #22b2da;
     color: #f0d43a;
     font-size: 20px;
-    font-family: 'Oswald', sans-serif;
+    font-family: "Oswald", sans-serif;
 }
 
 /* Reset style for HTML element on active to have no border*/
 
-input:focus, select:focus, textarea:focus, button:focus {
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
     outline: none;
 }
 
@@ -101,17 +118,17 @@ input:focus, select:focus, textarea:focus, button:focus {
 ::placeholder {
     /* Firefox, Chrome, Opera */
     color: #f0d43a;
-    font-family: 'Oswald', sans-serif;
+    font-family: "Oswald", sans-serif;
 }
 
 :-ms-input-placeholder {
     /* Internet Explorer 10-11 */
     color: #f0d43a;
-    font-family: 'Oswald', sans-serif;
+    font-family: "Oswald", sans-serif;
 }
 
 ::-ms-input-placeholder {
     /* Microsoft Edge */
     color: #f0d43a;
-    font-family: 'Oswald', sans-serif;
+    font-family: "Oswald", sans-serif;
 }

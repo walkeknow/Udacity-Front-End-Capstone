@@ -21,7 +21,7 @@ const cors = require('cors');
 app.use(cors());
 
 // Initialize the main project folder
-app.use(express.static('website'));
+app.use(express.static('dist'));
 
 // Spin up the server
 const port = 8000;
@@ -31,6 +31,10 @@ app.listen(port, listening);
 function listening() {
     console.log(`server running on port ${port}`);
 }
+
+app.get('/', function (req, res) {
+    res.sendFile('dist/index.html')
+})
 
 // Initialize all route with a callback function
 app.get('/all', getAll);
@@ -49,7 +53,6 @@ function addEntry(request, response) {
         // Converting temperature from the Kelvin to Celsius
         temperature: `${request.body.temperature.toString()}°C`,
         date: request.body.date,
-        feelings: request.body.feelings,
     }
     projectData["entryData"] = entryData;
 }

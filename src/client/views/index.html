@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Travel App</title>
+</head>
+
+<body>
+  <div id="app">
+    <div class="holder">
+      <div id="title">Weather Journal App</div>
+    </div>
+    <div class="holder zip">
+      <label for="city">Where do you want to travel to?</label>
+      <input type="text" id="zip" placeholder="Enter city name here">
+      <button id="generate" type="submit" onclick="Client.handleSubmit(event)">Get Info</button>
+    </div>
+    <div class="holder entry">
+      <div id="holder-title">Most Recent Entry</div>
+      <div class="entryHolder">
+        <div id="date"></div>
+        <div id="temp"></div>
+        <div id="content"></div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
