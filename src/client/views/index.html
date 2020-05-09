@@ -6,14 +6,16 @@
   <title>Travel App</title>
 </head>
 
-<body>
+<body onload="Client.loadDatePicker()">
   <div id="app">
     <div class="holder">
       <div id="title">Travel App</div>
     </div>
     <div class="holder zip">
       <label for="city">Where do you want to travel to?</label>
-      <input type="text" id="zip" placeholder="Enter city name here">
+      <input type="text" id="city" placeholder="Enter city name here">
+      <label for="date">When do you want to make this trip?</label>
+      <input type="text" id="date" placeholder="Enter date in MM/DD/YYYY format">
       <button id="generate" type="submit" onclick="Client.handleSubmit(event)">Get Info</button>
     </div>
     <div class="holder entry">

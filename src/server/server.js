@@ -49,8 +49,6 @@ app.post('/addEntry', addEntry);
 
 function addEntry(request, response) {
     const entryData = {
-
-        // Converting temperature from the Kelvin to Celsius
         temperature: `${request.body.temperature.toString()}°C`,
         date: request.body.date,
     }

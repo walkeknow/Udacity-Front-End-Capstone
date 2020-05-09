@@ -1,4 +1,6 @@
-import { handleSubmit } from './js/app.js';
+import { loadDatePicker } from './js/date';
+import { handleSubmit } from './js/app';
 import './styles/style.scss';
 
-export { handleSubmit }
+export { loadDatePicker };
+export { handleSubmit };

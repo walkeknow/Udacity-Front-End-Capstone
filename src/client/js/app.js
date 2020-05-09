@@ -1,40 +1,75 @@
+function isDateValid() {
+    // regex to verify date syntax
+    const dateExp = /^([0-9]{2})\/([0-9]{2})\/([0-9]{4})[\s]*$/
+    const inpDate = document.getElementById("date").value;
+    if (dateExp.test(inpDate)) {
+        // check if entered date is valid (checking for Leap Years)
+        const matches = dateExp.exec(inpDate);
+        const month = matches[1];
+        const date = matches[2];
+        const year = matches[3]
+        const inpDateObj = new Date(year, month - 1, date);
+        console.log(inpDateObj.getTime(), today.getTime())
+
+        /* In case Feb 29 2021 is entered, the Date object automatically
+        changes the month, therefore the below statement will return 
+        false*/
+        if (inpDateObj && (inpDateObj.getMonth() + 1) == month) {
+            // check if min date is today
+            /* creating the today object from current year, month and 
+            date instead of Date.now() so that the time becomes zero 
+            and today's date can be selected with equality operator*/
+            const temp = new Date()
+            const todayObj = new Date(temp.getFullYear(), temp.getMonth(), temp.getDate())
+            if (inpDateObj.getTime() >= todayObj.getTime()) {
+                console.log("yay")
+                return {
+                    todayObj,
+                    inputDateObj,
+                }
+            }
+        };
+        console.log("noo")
+        return null;
+    } else {
+        alert("Please enter date in MM/DD/YYYY format!")
+        return null;
+    }
+}
+
+
 /* Function called by event listener */
 function handleSubmit(event) {
     event.preventDefault();
 
-    // Create a new date instance dynamically with JS
-    const d = new Date();
-    const newDate = (d.getMonth() + 1) + '.' + d.getDate() + '.' + d.getFullYear();
-
     // Personal API Key for OpenWeatherMap API
-    const apiKey = "&appid=66c2354315610ef35e7c8e5f5fe28b4d";
-    let webApi = "http://api.openweathermap.org/data/2.5/weather";
-    const tempUnit = "&units=metric";
+    const geonamesKey = "&username=walkeknow";
+    const geoNamesApi = "http://api.geonames.org/searchJSON?name_equals=";
+    const city = "Paris"
+    // const city  = document.getElementById("city").value;
+    const geoNamesUrl = geoNamesApi + city + geonamesKey
+    console.log(geoNamesUrl);
 
-
-    const zipCode = document.getElementById("zip").value;
-    const url = `${webApi}?zip=${zipCode}${tempUnit}${apiKey}`;
-    console.log(url);
-    const feelings = "None"
-
-    // Calling functions
-    getData(url)
-        .then(function zipValid(temp) {
-            const entry = {
-                temperature: temp,
-                feelings,
-                date: newDate,
+    if (isDateValid()) {
+        // Calling functions
+        getData(geoNamesUrl)
+            .then(function (data) {
+                const placeObj = {
+                    long: data.geonames[0].lng,
+                    lat: data.geonames[0].lat,
+                }
+                console.log(placeObj)
+                postData('/addEntry', placeObj);
             }
-            postData('/addEntry', entry);
-        }
 
-            // Alert user if promise is rejected due to invalid Zipcode
-            , (error) => {
-                alert("Please enter a valid zip code!");
+                // Alert user if promise is rejected due to invalid Zipcode
+                , (error) => {
+                    alert("Sorry! Failed to find city details");
+                })
+            .then(function () {
+                updateUI('/all')
             })
-        .then(function () {
-            updateUI('/all')
-        })
+    }
 }
 
 /* Function to GET Web API Data*/
@@ -42,8 +77,7 @@ const getData = async (url = '') => {
     const response = await fetch(url);
     try {
         const allData = await response.json();
-        const temp = allData.main.temp;
-        return temp;
+        return allData;
     } catch (error) {
         console.log("error: ", error);
         throw error;
@@ -77,10 +111,8 @@ const updateUI = async (url = '') => {
 
         // Updating UI 
         const entry = serverData.entryData;
-        const date = document.getElementById('date');
-        const temp = document.getElementById('temp');
-        date.innerHTML = `<strong>Date:</strong> ${entry.date}`;
-        temp.innerHTML = `<strong>Temperature:</strong> ${entry.temperature}`;
+        const temp = document.getElementById('inpDateObj');
+        temp.innerHTML = `<strong>inpDateObjerature:</strong> ${entry.inpDateObjerature}`;
     } catch (error) {
         console.log("error", error);
     }
