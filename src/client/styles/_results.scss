@@ -1,0 +1,126 @@
+@use 'variables';
+
+.results {
+    background: rgba(59, 74, 107, 0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h1 {
+        font-size: 2em;
+        padding: 15px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .info-holder {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .entry-holder {
+            padding: 20px;
+            display: grid;
+            grid-template-areas:
+                "days weather"
+                "days temp";
+            grid-template-columns: 1fr 3fr;
+
+            #days {
+                grid-area: days;
+                border: 4px solid variables.$color-three;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                h2 {
+                    font-size: 1.2em;
+                    color: variables.$color-three;
+                    background-color: variables.$color-two;
+                    padding: 10px;
+                    width: 100%;
+                    text-align: center;
+                }
+                #countdown {
+                    font-size: 4em;
+                    padding: 5px;
+                    margin-top: 10px;
+                }
+            }
+            #weather {
+                padding: 5px;
+                grid-area: weather;
+                border-top: 3px solid variables.$color-three;
+                border-right: 3px solid variables.$color-three;
+                display: flex;
+                flex-direction: row;
+                align-items: baseline;
+                .weather-title {
+                    font-size: 1.6em;
+                    margin-right: 3px;
+                }
+                .info {
+                    font-style: italic;
+                    font-size: 1.4em;
+                    text-align: left;
+                }
+            }
+            #temp {
+                grid-area: temp;
+                border-bottom: 3px solid variables.$color-three;
+                border-right: 3px solid variables.$color-three;
+                padding: 5px;
+                display: grid;
+                grid-template-columns: 1fr 2fr;
+                grid-template-areas:
+                    "ma icn"
+                    "mi icn";
+                #max-temp {
+                    grid-area: ma;
+                    h3 {
+                        font-weight: bold;
+                    }
+                    .info {
+                        font-size: 1.5em;
+                    }
+                }
+                #min-temp {
+                    grid-area: mi;
+                    h3 {
+                        font-weight: bold;
+                    }
+                    .info {
+                        font-size: 1.5em;
+                    }
+                }
+                #icon {
+                    display: flex;
+                    justify-content: center;
+                    flex-direction: column;
+                    align-items: center;
+                    grid-area: icn;
+                    background-image: url("../icons/a01d.png");
+                    background-repeat: no-repeat;
+                    padding: 50px;
+                }
+            }
+        }
+        .image-holder {
+            #city-image {
+                height: 200px;
+                width: 370px;
+                border: 3px solid variables.$color-three;
+                margin-bottom: 20px;
+            }
+        }
+    }
+}
+
+@media (min-width: 900px) {
+    .results {
+        padding: 50px;
+    }
+    #city-image {
+        height: 400px;
+        width: 600px;
+    }
+}

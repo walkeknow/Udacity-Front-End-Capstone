@@ -87,6 +87,24 @@ var Client =
 /************************************************************************/
 /******/ ({
 
+/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/client/styles/resets.scss":
+/*!********************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/client/styles/resets.scss ***!
+  \********************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// Imports
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+exports = ___CSS_LOADER_API_IMPORT___(false);
+// Module
+exports.push([module.i, "/* http://meyerweb.com/eric/tools/css/reset/\n   v2.0 | 20110126\n   License: none (public domain)\n*/\n* {\n  box-sizing: border-box;\n}\n\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-size: 100%;\n  font: inherit;\n  vertical-align: baseline;\n}\n\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, menu, nav, section {\n  display: block;\n}\n\nbody {\n  line-height: 1;\n}\n\nol, ul {\n  list-style: none;\n}\n\nblockquote, q {\n  quotes: none;\n}\n\nblockquote:before, blockquote:after,\nq:before, q:after {\n  content: \"\";\n  content: none;\n}\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0;\n}\n\nul {\n  list-style-type: none;\n}", ""]);
+// Exports
+module.exports = exports;
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/client/styles/style.scss":
 /*!*******************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/client/styles/style.scss ***!
@@ -97,11 +115,13 @@ var Client =
 // Imports
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 var ___CSS_LOADER_GET_URL_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/getUrl.js */ "./node_modules/css-loader/dist/runtime/getUrl.js");
-var ___CSS_LOADER_URL_IMPORT_0___ = __webpack_require__(/*! ../fonts/Oswald-VariableFont_wght.ttf */ "./src/client/fonts/Oswald-VariableFont_wght.ttf");
+var ___CSS_LOADER_URL_IMPORT_0___ = __webpack_require__(/*! ../icons/a01d.png */ "./src/client/icons/a01d.png");
+var ___CSS_LOADER_URL_IMPORT_1___ = __webpack_require__(/*! ../fonts/Oswald-VariableFont_wght.ttf */ "./src/client/fonts/Oswald-VariableFont_wght.ttf");
 exports = ___CSS_LOADER_API_IMPORT___(false);
 var ___CSS_LOADER_URL_REPLACEMENT_0___ = ___CSS_LOADER_GET_URL_IMPORT___(___CSS_LOADER_URL_IMPORT_0___);
+var ___CSS_LOADER_URL_REPLACEMENT_1___ = ___CSS_LOADER_GET_URL_IMPORT___(___CSS_LOADER_URL_IMPORT_1___);
 // Module
-exports.push([module.i, "/*\n  All a user has to do to change the calendar size is\n  change the font-size on the container and everything\n  magically resizes accordingly. Relative units ftw!\n*/\n.qs-datepicker-container {\n  font-size: 1rem;\n  font-family: sans-serif;\n  color: black;\n  position: absolute;\n  width: 15.625em;\n  display: flex;\n  flex-direction: column;\n  z-index: 9001;\n  user-select: none;\n  border: 1px solid gray;\n  border-radius: 0.263921875em;\n  overflow: hidden;\n  background: white;\n  box-shadow: 0 1.25em 1.25em -0.9375em rgba(0, 0, 0, 0.3);\n}\n.qs-datepicker-container * {\n  box-sizing: border-box;\n}\n.qs-datepicker-container.qs-centered {\n  position: fixed;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n}\n.qs-datepicker-container.qs-hidden {\n  display: none;\n}\n\n.qs-datepicker .qs-overlay {\n  position: absolute;\n  top: 0;\n  left: 0;\n  background: rgba(0, 0, 0, 0.75);\n  color: white;\n  width: 100%;\n  height: 100%;\n  padding: 0.5em;\n  z-index: 1;\n  opacity: 1;\n  transition: opacity 0.3s;\n  display: flex;\n  flex-direction: column;\n}\n.qs-datepicker .qs-overlay.qs-hidden {\n  opacity: 0;\n  z-index: -1;\n}\n.qs-datepicker .qs-overlay .qs-overlay-year {\n  border: none;\n  background: transparent;\n  border-bottom: 1px solid white;\n  border-radius: 0;\n  color: white;\n  font-size: 0.875em;\n  padding: 0.25em 0;\n  width: 80%;\n  text-align: center;\n  margin: 0 auto;\n  display: block;\n}\n.qs-datepicker .qs-overlay .qs-overlay-year::-webkit-inner-spin-button {\n  -webkit-appearance: none;\n}\n.qs-datepicker .qs-overlay .qs-close {\n  padding: 0.5em;\n  cursor: pointer;\n  position: absolute;\n  top: 0;\n  right: 0;\n}\n.qs-datepicker .qs-overlay .qs-submit {\n  border: 1px solid white;\n  border-radius: 0.263921875em;\n  padding: 0.5em;\n  margin: 0 auto auto;\n  cursor: pointer;\n  background: rgba(128, 128, 128, 0.4);\n}\n.qs-datepicker .qs-overlay .qs-submit.qs-disabled {\n  color: gray;\n  border-color: gray;\n  cursor: not-allowed;\n}\n.qs-datepicker .qs-overlay .qs-overlay-month-container {\n  display: flex;\n  flex-wrap: wrap;\n  flex-grow: 1;\n}\n.qs-datepicker .qs-overlay .qs-overlay-month {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  width: calc(100% / 3);\n  cursor: pointer;\n  opacity: 0.5;\n  transition: opacity 0.15s;\n}\n.qs-datepicker .qs-overlay .qs-overlay-month.active, .qs-datepicker .qs-overlay .qs-overlay-month:hover {\n  opacity: 1;\n}\n.qs-datepicker .qs-controls {\n  width: 100%;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  flex-grow: 1;\n  flex-shrink: 0;\n  background: lightgray;\n  filter: blur(0px);\n  transition: filter 0.3s;\n}\n.qs-datepicker .qs-controls.qs-blur {\n  filter: blur(5px);\n}\n.qs-datepicker .qs-arrow {\n  height: 1.5625em;\n  width: 1.5625em;\n  position: relative;\n  cursor: pointer;\n  border-radius: 0.263921875em;\n  transition: background 0.15s;\n}\n.qs-datepicker .qs-arrow:hover {\n  background: rgba(0, 0, 0, 0.1);\n}\n.qs-datepicker .qs-arrow:hover.qs-left:after {\n  border-right-color: black;\n}\n.qs-datepicker .qs-arrow:hover.qs-right:after {\n  border-left-color: black;\n}\n.qs-datepicker .qs-arrow:after {\n  content: \"\";\n  border: 0.390625em solid transparent;\n  position: absolute;\n  top: 50%;\n  transition: border 0.2s;\n}\n.qs-datepicker .qs-arrow.qs-left:after {\n  border-right-color: gray;\n  right: 50%;\n  transform: translate(25%, -50%);\n}\n.qs-datepicker .qs-arrow.qs-right:after {\n  border-left-color: gray;\n  left: 50%;\n  transform: translate(-25%, -50%);\n}\n.qs-datepicker .qs-month-year {\n  font-weight: bold;\n  transition: border 0.2s;\n  border-bottom: 1px solid transparent;\n  cursor: pointer;\n}\n.qs-datepicker .qs-month-year:hover {\n  border-bottom: 1px solid gray;\n}\n.qs-datepicker .qs-month-year:focus, .qs-datepicker .qs-month-year:active:focus {\n  outline: none;\n}\n.qs-datepicker .qs-month {\n  padding-right: 0.5ex;\n}\n.qs-datepicker .qs-year {\n  padding-left: 0.5ex;\n}\n.qs-datepicker .qs-squares {\n  display: flex;\n  flex-wrap: wrap;\n  padding: 0.3125em;\n  filter: blur(0px);\n  transition: filter 0.3s;\n}\n.qs-datepicker .qs-squares.qs-blur {\n  filter: blur(5px);\n}\n.qs-datepicker .qs-square {\n  width: calc(100% / 7);\n  height: 1.5625em;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  cursor: pointer;\n  transition: background 0.1s;\n  border-radius: 0.263921875em;\n}\n.qs-datepicker .qs-square.qs-current {\n  font-weight: bold;\n}\n.qs-datepicker .qs-square.qs-current span {\n  text-decoration: underline;\n}\n.qs-datepicker .qs-square.qs-active {\n  background: lightblue;\n}\n.qs-datepicker .qs-square.qs-range-date-start:not(.qs-range-date-6) {\n  border-top-right-radius: 0;\n  border-bottom-right-radius: 0;\n}\n.qs-datepicker .qs-square.qs-range-date-middle {\n  background: #d4ebf2;\n}\n.qs-datepicker .qs-square.qs-range-date-middle:not(.qs-range-date-0):not(.qs-range-date-6) {\n  border-radius: 0;\n}\n.qs-datepicker .qs-square.qs-range-date-middle.qs-range-date-0 {\n  border-top-right-radius: 0;\n  border-bottom-right-radius: 0;\n}\n.qs-datepicker .qs-square.qs-range-date-middle.qs-range-date-6 {\n  border-top-left-radius: 0;\n  border-bottom-left-radius: 0;\n}\n.qs-datepicker .qs-square.qs-range-date-end:not(.qs-range-date-0) {\n  border-top-left-radius: 0;\n  border-bottom-left-radius: 0;\n}\n.qs-datepicker .qs-square.qs-disabled span {\n  opacity: 0.2;\n}\n.qs-datepicker .qs-square.qs-empty {\n  cursor: default;\n}\n.qs-datepicker .qs-square.qs-disabled {\n  cursor: not-allowed;\n}\n.qs-datepicker .qs-square.qs-day {\n  cursor: default;\n  font-weight: bold;\n  color: gray;\n}\n.qs-datepicker .qs-square:not(.qs-empty):not(.qs-disabled):not(.qs-day):not(.qs-active):hover {\n  background: orange;\n}\n.qs-datepicker .qs-event {\n  position: relative;\n}\n.qs-datepicker .qs-event:after {\n  content: \"\";\n  position: absolute;\n  width: 0.46875em;\n  height: 0.46875em;\n  border-radius: 50%;\n  background: #07f;\n  bottom: 0;\n  right: 0;\n}\n.qs-datepicker .qs-event.qs-disabled:after, .qs-datepicker .qs-event.qs-empty:after {\n  background: #cce4ff;\n}\n\n@font-face {\n  font-family: \"Oswald\";\n  src: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ") format(\"truetype\");\n}\nbody {\n  background: #fffff8;\n  font-family: -apple-system, BlinkMacSystemFont, sans-serif;\n}\n\n#app {\n  display: grid;\n  grid-auto-rows: minmax(150px, auto);\n  /* grid-template-columns:  */\n  background: #f23557;\n  color: #f0d43a;\n  justify-content: center;\n  grid-gap: 1em;\n  font-size: 20px;\n  font-family: \"Oswald\", sans-serif;\n  padding: 20px;\n  overflow: auto;\n  height: 100vh;\n}\n\n.holder {\n  height: 100%;\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  overflow: auto;\n}\n\n.entry {\n  background: rgba(59, 74, 107, 0.4);\n  display: flex;\n  flex: 1;\n  min-height: min-content;\n}\n\n.entryHolder {\n  padding: 10px;\n}\n\n#title {\n  font-size: 36px;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  height: 100%;\n}\n\n#holder-title {\n  font-size: 27px;\n  padding: 10px;\n}\n\n/*  Basic Styling To Override Default For Basic HTML Elements */\nlabel {\n  display: block;\n  font-size: 27px;\n}\n\ninput {\n  display: block;\n  height: 60px;\n  width: 70vw;\n  background: #22b2da;\n  color: #f0d43a;\n  font-size: 20px;\n  font-family: \"Oswald\", sans-serif;\n  border: none;\n  padding-left: 10px;\n  padding-right: 10px;\n}\n\nbutton {\n  margin-top: 10px;\n  height: 100px;\n  background: #3b4a6b;\n  color: #f0d43a;\n  font-size: 26px;\n  font-family: \"Oswald\", sans-serif;\n  border-radius: 5px;\n  border: none;\n}\nbutton:hover {\n  cursor: pointer;\n}\nbutton:active {\n  opacity: 0.8;\n}\n\nh1 {\n  font-size: 36px;\n}\n\ntextarea {\n  background: #22b2da;\n  color: #f0d43a;\n  font-size: 20px;\n  font-family: \"Oswald\", sans-serif;\n}\n\n/* Reset style for HTML element on active to have no border*/\ninput:focus,\nselect:focus,\ntextarea:focus,\nbutton:focus {\n  outline: none;\n}\n\n/* Style for Placeholder Text*/\n::placeholder {\n  /* Firefox, Chrome, Opera */\n  color: #f0d43a;\n  font-family: \"Oswald\", sans-serif;\n}\n\n:-ms-input-placeholder {\n  /* Internet Explorer 10-11 */\n  color: #f0d43a;\n  font-family: \"Oswald\", sans-serif;\n}\n\n::-ms-input-placeholder {\n  /* Microsoft Edge */\n  color: #f0d43a;\n  font-family: \"Oswald\", sans-serif;\n}", ""]);
+exports.push([module.i, "label {\n  display: block;\n  font-size: 1.8em;\n  padding-top: 20px;\n  padding-bottom: 8px;\n  width: 100%;\n}\n\n/* Style for Placeholder Text*/\ninput {\n  display: block;\n  height: 60px;\n  width: 100%;\n  background: #22b2da;\n  color: #f0d43a;\n  font-size: 1.2em;\n  font-family: \"Oswald\", sans-serif;\n  border: none;\n  padding-left: 10px;\n  padding-right: 10px;\n}\ninput::placeholder {\n  /* Firefox, Chrome, Opera */\n  color: #f0d43a;\n  opacity: 0.8;\n  font-family: \"Oswald\", sans-serif;\n}\ninput::-ms-input-placeholder {\n  /* Internet Explorer 10-11 */\n  color: #f0d43a;\n  opacity: 0.8;\n  font-family: \"Oswald\", sans-serif;\n}\ninput::-ms-input-placeholder {\n  /* Microsoft Edge */\n  color: #f0d43a;\n  opacity: 0.8;\n  font-family: \"Oswald\", sans-serif;\n}\n\nbutton {\n  margin-bottom: 20px;\n  margin-top: 10px;\n  height: 100px;\n  background: #3b4a6b;\n  color: #f0d43a;\n  font-size: 1.6em;\n  font-family: \"Oswald\", sans-serif;\n  border-radius: 5px;\n  border: none;\n  width: 100%;\n}\nbutton:hover {\n  cursor: pointer;\n}\nbutton:active {\n  opacity: 0.8;\n}\nbutton:focus {\n  outline: none;\n}\n\n.results {\n  background: rgba(59, 74, 107, 0.4);\n  display: flex;\n  flex-direction: column;\n  flex: 1;\n  height: 100%;\n}\n.results #results-title {\n  font-size: 2em;\n  padding: 15px;\n  display: flex;\n  justify-content: center;\n}\n.results .entry-holder {\n  padding: 20px;\n  display: grid;\n  grid-template-areas: \"days weather\" \"days temp\";\n  grid-template-columns: 1fr 3fr;\n}\n.results .entry-holder #days {\n  grid-area: days;\n  border: 4px solid #3b4a6b;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n}\n.results .entry-holder #days h2 {\n  font-size: 1.2em;\n  color: #3b4a6b;\n  background-color: #22b2da;\n  padding: 5px;\n  width: 100%;\n  text-align: center;\n}\n.results .entry-holder #days #countdown {\n  font-size: 4em;\n  padding: 5px;\n}\n.results .entry-holder #weather {\n  padding: 5px;\n  grid-area: weather;\n  border-top: 3px solid #3b4a6b;\n  border-right: 3px solid #3b4a6b;\n  display: flex;\n  flex-direction: row;\n  align-items: baseline;\n}\n.results .entry-holder #weather .weather-title {\n  font-size: 1.6em;\n  margin-right: 3px;\n}\n.results .entry-holder #weather .info {\n  font-style: italic;\n  font-size: 1.4em;\n  text-align: left;\n}\n.results .entry-holder #temp {\n  grid-area: temp;\n  border-bottom: 3px solid #3b4a6b;\n  border-right: 3px solid #3b4a6b;\n  padding: 5px;\n  display: grid;\n  grid-template-columns: 1fr 2fr;\n  grid-template-areas: \"ma icn\" \"mi icn\";\n}\n.results .entry-holder #temp #max-temp {\n  grid-area: ma;\n  display: flex;\n}\n.results .entry-holder #temp #max-temp h3 {\n  font-weight: bold;\n  margin-right: 5px;\n}\n.results .entry-holder #temp #min-temp {\n  grid-area: mi;\n  display: flex;\n}\n.results .entry-holder #temp #min-temp h3 {\n  font-weight: bold;\n  margin-right: 5px;\n}\n.results .entry-holder #temp #icon {\n  grid-area: icn;\n  background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n}\n\n/*\n  All a user has to do to change the calendar size is\n  change the font-size on the container and everything\n  magically resizes accordingly. Relative units ftw!\n*/\n.qs-datepicker-container {\n  font-size: 1rem;\n  font-family: sans-serif;\n  color: black;\n  position: absolute;\n  width: 15.625em;\n  display: flex;\n  flex-direction: column;\n  z-index: 9001;\n  user-select: none;\n  border: 1px solid gray;\n  border-radius: 0.263921875em;\n  overflow: hidden;\n  background: white;\n  box-shadow: 0 1.25em 1.25em -0.9375em rgba(0, 0, 0, 0.3);\n}\n.qs-datepicker-container * {\n  box-sizing: border-box;\n}\n.qs-datepicker-container.qs-centered {\n  position: fixed;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n}\n.qs-datepicker-container.qs-hidden {\n  display: none;\n}\n\n.qs-datepicker .qs-overlay {\n  position: absolute;\n  top: 0;\n  left: 0;\n  background: rgba(0, 0, 0, 0.75);\n  color: white;\n  width: 100%;\n  height: 100%;\n  padding: 0.5em;\n  z-index: 1;\n  opacity: 1;\n  transition: opacity 0.3s;\n  display: flex;\n  flex-direction: column;\n}\n.qs-datepicker .qs-overlay.qs-hidden {\n  opacity: 0;\n  z-index: -1;\n}\n.qs-datepicker .qs-overlay .qs-overlay-year {\n  border: none;\n  background: transparent;\n  border-bottom: 1px solid white;\n  border-radius: 0;\n  color: white;\n  font-size: 0.875em;\n  padding: 0.25em 0;\n  width: 80%;\n  text-align: center;\n  margin: 0 auto;\n  display: block;\n}\n.qs-datepicker .qs-overlay .qs-overlay-year::-webkit-inner-spin-button {\n  -webkit-appearance: none;\n}\n.qs-datepicker .qs-overlay .qs-close {\n  padding: 0.5em;\n  cursor: pointer;\n  position: absolute;\n  top: 0;\n  right: 0;\n}\n.qs-datepicker .qs-overlay .qs-submit {\n  border: 1px solid white;\n  border-radius: 0.263921875em;\n  padding: 0.5em;\n  margin: 0 auto auto;\n  cursor: pointer;\n  background: rgba(128, 128, 128, 0.4);\n}\n.qs-datepicker .qs-overlay .qs-submit.qs-disabled {\n  color: gray;\n  border-color: gray;\n  cursor: not-allowed;\n}\n.qs-datepicker .qs-overlay .qs-overlay-month-container {\n  display: flex;\n  flex-wrap: wrap;\n  flex-grow: 1;\n}\n.qs-datepicker .qs-overlay .qs-overlay-month {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  width: calc(100% / 3);\n  cursor: pointer;\n  opacity: 0.5;\n  transition: opacity 0.15s;\n}\n.qs-datepicker .qs-overlay .qs-overlay-month.active, .qs-datepicker .qs-overlay .qs-overlay-month:hover {\n  opacity: 1;\n}\n.qs-datepicker .qs-controls {\n  width: 100%;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  flex-grow: 1;\n  flex-shrink: 0;\n  background: lightgray;\n  filter: blur(0px);\n  transition: filter 0.3s;\n}\n.qs-datepicker .qs-controls.qs-blur {\n  filter: blur(5px);\n}\n.qs-datepicker .qs-arrow {\n  height: 1.5625em;\n  width: 1.5625em;\n  position: relative;\n  cursor: pointer;\n  border-radius: 0.263921875em;\n  transition: background 0.15s;\n}\n.qs-datepicker .qs-arrow:hover {\n  background: rgba(0, 0, 0, 0.1);\n}\n.qs-datepicker .qs-arrow:hover.qs-left:after {\n  border-right-color: black;\n}\n.qs-datepicker .qs-arrow:hover.qs-right:after {\n  border-left-color: black;\n}\n.qs-datepicker .qs-arrow:after {\n  content: \"\";\n  border: 0.390625em solid transparent;\n  position: absolute;\n  top: 50%;\n  transition: border 0.2s;\n}\n.qs-datepicker .qs-arrow.qs-left:after {\n  border-right-color: gray;\n  right: 50%;\n  transform: translate(25%, -50%);\n}\n.qs-datepicker .qs-arrow.qs-right:after {\n  border-left-color: gray;\n  left: 50%;\n  transform: translate(-25%, -50%);\n}\n.qs-datepicker .qs-month-year {\n  font-weight: bold;\n  transition: border 0.2s;\n  border-bottom: 1px solid transparent;\n  cursor: pointer;\n}\n.qs-datepicker .qs-month-year:hover {\n  border-bottom: 1px solid gray;\n}\n.qs-datepicker .qs-month-year:focus, .qs-datepicker .qs-month-year:active:focus {\n  outline: none;\n}\n.qs-datepicker .qs-month {\n  padding-right: 0.5ex;\n}\n.qs-datepicker .qs-year {\n  padding-left: 0.5ex;\n}\n.qs-datepicker .qs-squares {\n  display: flex;\n  flex-wrap: wrap;\n  padding: 0.3125em;\n  filter: blur(0px);\n  transition: filter 0.3s;\n}\n.qs-datepicker .qs-squares.qs-blur {\n  filter: blur(5px);\n}\n.qs-datepicker .qs-square {\n  width: calc(100% / 7);\n  height: 1.5625em;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  cursor: pointer;\n  transition: background 0.1s;\n  border-radius: 0.263921875em;\n}\n.qs-datepicker .qs-square.qs-current {\n  font-weight: bold;\n}\n.qs-datepicker .qs-square.qs-current span {\n  text-decoration: underline;\n}\n.qs-datepicker .qs-square.qs-active {\n  background: lightblue;\n}\n.qs-datepicker .qs-square.qs-range-date-start:not(.qs-range-date-6) {\n  border-top-right-radius: 0;\n  border-bottom-right-radius: 0;\n}\n.qs-datepicker .qs-square.qs-range-date-middle {\n  background: #d4ebf2;\n}\n.qs-datepicker .qs-square.qs-range-date-middle:not(.qs-range-date-0):not(.qs-range-date-6) {\n  border-radius: 0;\n}\n.qs-datepicker .qs-square.qs-range-date-middle.qs-range-date-0 {\n  border-top-right-radius: 0;\n  border-bottom-right-radius: 0;\n}\n.qs-datepicker .qs-square.qs-range-date-middle.qs-range-date-6 {\n  border-top-left-radius: 0;\n  border-bottom-left-radius: 0;\n}\n.qs-datepicker .qs-square.qs-range-date-end:not(.qs-range-date-0) {\n  border-top-left-radius: 0;\n  border-bottom-left-radius: 0;\n}\n.qs-datepicker .qs-square.qs-disabled span {\n  opacity: 0.2;\n}\n.qs-datepicker .qs-square.qs-empty {\n  cursor: default;\n}\n.qs-datepicker .qs-square.qs-disabled {\n  cursor: not-allowed;\n}\n.qs-datepicker .qs-square.qs-day {\n  cursor: default;\n  font-weight: bold;\n  color: gray;\n}\n.qs-datepicker .qs-square:not(.qs-empty):not(.qs-disabled):not(.qs-day):not(.qs-active):hover {\n  background: orange;\n}\n.qs-datepicker .qs-event {\n  position: relative;\n}\n.qs-datepicker .qs-event:after {\n  content: \"\";\n  position: absolute;\n  width: 0.46875em;\n  height: 0.46875em;\n  border-radius: 50%;\n  background: #07f;\n  bottom: 0;\n  right: 0;\n}\n.qs-datepicker .qs-event.qs-disabled:after, .qs-datepicker .qs-event.qs-empty:after {\n  background: #cce4ff;\n}\n\n@font-face {\n  font-family: \"Oswald\";\n  src: url(" + ___CSS_LOADER_URL_REPLACEMENT_1___ + ") format(\"truetype\");\n}\nbody {\n  background: #fffff8;\n  font-family: -apple-system, BlinkMacSystemFont, sans-serif;\n}\n\n#app {\n  display: grid;\n  grid-template-areas: \"hr\" \"bod\" \"ft\";\n  grid-gap: 20px;\n  grid-template-columns: minmax(70vw, auto);\n  background: #f23557;\n  color: #f0d43a;\n  justify-content: center;\n  font-size: 1em;\n  font-family: \"Oswald\", sans-serif;\n  overflow: auto;\n  min-height: 100vh;\n  height: 100%;\n}\n\ntitle {\n  font-size: 2.5em;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  height: 100%;\n  grid-area: hr;\n  text-align: center;\n  padding-top: 40px;\n}\n\ncontent {\n  grid-area: bod;\n  padding: 20px 40px;\n  display: grid;\n  grid-template-areas: \"form form\" \"results results\";\n}\ncontent .form {\n  grid-area: form;\n}\ncontent .results {\n  grid-area: results;\n}\n\n#footer {\n  background-color: #3b4a6b;\n  grid-area: ft;\n  width: 100vw;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  padding: 10px;\n  font-size: 1.2em;\n}", ""]);
 // Exports
 module.exports = exports;
 
@@ -562,6 +582,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./src/client/icons/a01d.png":
+/*!***********************************!*\
+  !*** ./src/client/icons/a01d.png ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "images/a01d.png");
+
+/***/ }),
+
 /***/ "./src/client/index.js":
 /*!*****************************!*\
   !*** ./src/client/index.js ***!
@@ -577,8 +610,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _js_app__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./js/app */ "./src/client/js/app.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "handleSubmit", function() { return _js_app__WEBPACK_IMPORTED_MODULE_1__["handleSubmit"]; });
 
-/* harmony import */ var _styles_style_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./styles/style.scss */ "./src/client/styles/style.scss");
-/* harmony import */ var _styles_style_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_styles_style_scss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _styles_resets_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./styles/resets.scss */ "./src/client/styles/resets.scss");
+/* harmony import */ var _styles_resets_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_styles_resets_scss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _styles_style_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./styles/style.scss */ "./src/client/styles/style.scss");
+/* harmony import */ var _styles_style_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_styles_style_scss__WEBPACK_IMPORTED_MODULE_3__);
+
 
 
 
@@ -598,7 +634,11 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "handleSubmit", function() { return handleSubmit; });
-function isDateValid() {
+function isInputValid(city='') {
+    if (!city) {
+        alert("Please enter city name!")
+        return null;
+    }
     // regex to verify date syntax
     const dateExp = /^([0-9]{2})\/([0-9]{2})\/([0-9]{4})[\s]*$/
     const inpDate = document.getElementById("date").value;
@@ -608,20 +648,20 @@ function isDateValid() {
         const month = matches[1];
         const date = matches[2];
         const year = matches[3]
-        const inpDateObj = new Date(year, month - 1, date);
-        console.log(inpDateObj.getTime(), today.getTime())
+        const inputDateObj = new Date(year, month - 1, date);
 
         /* In case Feb 29 2021 is entered, the Date object automatically
         changes the month, therefore the below statement will return 
         false*/
-        if (inpDateObj && (inpDateObj.getMonth() + 1) == month) {
+        if (inputDateObj && (inputDateObj.getMonth() + 1) == month) {
             // check if min date is today
+
             /* creating the today object from current year, month and 
             date instead of Date.now() so that the time becomes zero 
-            and today's date can be selected with equality operator*/
+            and today's date can be compared using equality operator*/
             const temp = new Date()
             const todayObj = new Date(temp.getFullYear(), temp.getMonth(), temp.getDate())
-            if (inpDateObj.getTime() >= todayObj.getTime()) {
+            if (inputDateObj.getTime() >= todayObj.getTime()) {
                 console.log("yay")
                 return {
                     todayObj,
@@ -632,7 +672,7 @@ function isDateValid() {
         console.log("noo")
         return null;
     } else {
-        alert("Please enter date in MM/DD/YYYY format!")
+        alert("Please enter valid date in MM/DD/YYYY format!")
         return null;
     }
 }
@@ -645,12 +685,13 @@ function handleSubmit(event) {
     // Personal API Key for OpenWeatherMap API
     const geonamesKey = "&username=walkeknow";
     const geoNamesApi = "http://api.geonames.org/searchJSON?name_equals=";
-    const city = "Paris"
+    const city = "New York"
     // const city  = document.getElementById("city").value;
-    const geoNamesUrl = geoNamesApi + city + geonamesKey
+    const geoNamesUrl = encodeURI(geoNamesApi + city + geonamesKey);
     console.log(geoNamesUrl);
 
-    if (isDateValid()) {
+
+    if (isInputValid(city)) {
         // Calling functions
         getData(geoNamesUrl)
             .then(function (data) {
@@ -711,8 +752,8 @@ const updateUI = async (url = '') => {
 
         // Updating UI 
         const entry = serverData.entryData;
-        const temp = document.getElementById('inpDateObj');
-        temp.innerHTML = `<strong>inpDateObjerature:</strong> ${entry.inpDateObjerature}`;
+        const temp = document.getElementById('inputDateObj');
+        temp.innerHTML = `<strong>inputDateObjerature:</strong> ${entry.inputDateObjerature}`;
     } catch (error) {
         console.log("error", error);
     }
@@ -751,6 +792,35 @@ function loadDatePicker() {
 
 
 
+
+/***/ }),
+
+/***/ "./src/client/styles/resets.scss":
+/*!***************************************!*\
+  !*** ./src/client/styles/resets.scss ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var api = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+            var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!../../../node_modules/sass-loader/dist/cjs.js!./resets.scss */ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/client/styles/resets.scss");
+
+            content = content.__esModule ? content.default : content;
+
+            if (typeof content === 'string') {
+              content = [[module.i, content, '']];
+            }
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = api(content, options);
+
+
+
+module.exports = content.locals || {};
 
 /***/ }),
 

@@ -1,0 +1,68 @@
+@use 'variables';
+
+label {
+    display: block;
+    font-size: 1.8em;
+    padding-top: 20px;
+    padding-bottom: 8px;
+    width: 100%;
+}
+
+/* Style for Placeholder Text*/
+@mixin placeholder {
+    color: variables.$primary-color;
+    opacity: 0.8;
+    font-family: variables.$font;
+}
+
+input {
+    display: block;
+    height: 60px;
+    width: 100%;
+    background: variables.$color-two;
+    color: variables.$primary-color;
+    font-size: 1.2em;
+    font-family: variables.$font;
+    border: none;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    &::placeholder {
+        /* Firefox, Chrome, Opera */
+        @include placeholder;
+    }
+
+    &::-ms-input-placeholder {
+        /* Internet Explorer 10-11 */
+        @include placeholder;
+    }
+
+    &::-ms-input-placeholder {
+        /* Microsoft Edge */
+        @include placeholder;
+    }
+}
+
+button {
+    margin-bottom: 20px;
+    margin-top: 10px;
+    height: 100px;
+    background: variables.$color-three;
+    color: variables.$primary-color;
+    font-size: 1.6em;
+    font-family: variables.$font;
+    border-radius: 5px;
+    border: none;
+    width: 100%;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    &:active {
+        opacity: 0.8;
+    }
+    &:focus {
+        outline: none;
+    }
+}

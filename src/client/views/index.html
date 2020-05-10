@@ -8,26 +8,48 @@
 
 <body onload="Client.loadDatePicker()">
   <div id="app">
-    <div class="holder">
-      <div id="title">Travel App</div>
-    </div>
-    <div class="holder zip">
-      <label for="city">Where do you want to travel to?</label>
-      <input type="text" id="city" placeholder="Enter city name here">
-      <label for="date">When do you want to make this trip?</label>
-      <input type="text" id="date" placeholder="Enter date in MM/DD/YYYY format">
-      <button id="generate" type="submit" onclick="Client.handleSubmit(event)">Get Info</button>
-    </div>
-    <div class="holder entry">
-      <div id="holder-title">Most Recent Entry</div>
-      <div class="entryHolder">
-        <div id="date"></div>
-        <div id="temp"></div>
-        <div id="content"></div>
+    <title>Travel App</title>
+    <content>
+      <div class="form">
+        <label for="city">Where do you want to travel?</label>
+        <input type="text" id="city" placeholder="Enter city name here">
+        <label for="date">When do you want to make this trip?</label>
+        <input type="text" id="date" placeholder="MM/DD/YYYY">
+        <button id="generate" type="submit" onclick="Client.handleSubmit(event)">Get Info</button>
       </div>
-    </div>
+      <div class="results">
+        <h1>Travel Info</h1>
+        <div class="info-holder">
+          <div class="entry-holder">
+            <div id="days">
+              <h2>Days Left</h2>
+              <div id="countdown">21</div>
+            </div>
+            <div id="weather">
+              <div class="weather-title">Weather:</div>
+              <div class="info">Cloudy</div>
+            </div>
+            <div id="temp">
+              <div id="max-temp">
+                <h3>Max Temp</h3>
+                <div class="info">40</div>
+              </div>
+              <div id="min-temp">
+                <h3>Min Temp</h3>
+                <div class="info">20</div>
+              </div>
+              <div id="icon"></div>
+            </div>
+          </div>
+          <div class="image-holder">
+            <h1>City Name</h1>
+            <div id="city-image"></div>
+          </div>
+        </div>
+      </div>
+    </content>
   </div>
-
+  <footer id="footer">Kewal Shah 2020</footer>
 </body>
 
 </html>

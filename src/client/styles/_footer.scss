@@ -1,0 +1,15 @@
+@use 'variables';
+
+#footer {
+    color: variables.$primary-color;
+    justify-content: center;
+    font-size: 1em;
+    font-family: variables.$font;
+    background-color: variables.$color-three;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    font-size: 1.2em;
+}

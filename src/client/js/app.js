@@ -1,4 +1,8 @@
-function isDateValid() {
+function isInputValid(city='') {
+    if (!city) {
+        alert("Please enter city name!")
+        return null;
+    }
     // regex to verify date syntax
     const dateExp = /^([0-9]{2})\/([0-9]{2})\/([0-9]{4})[\s]*$/
     const inpDate = document.getElementById("date").value;
@@ -8,20 +12,20 @@ function isDateValid() {
         const month = matches[1];
         const date = matches[2];
         const year = matches[3]
-        const inpDateObj = new Date(year, month - 1, date);
-        console.log(inpDateObj.getTime(), today.getTime())
+        const inputDateObj = new Date(year, month - 1, date);
 
         /* In case Feb 29 2021 is entered, the Date object automatically
         changes the month, therefore the below statement will return 
         false*/
-        if (inpDateObj && (inpDateObj.getMonth() + 1) == month) {
+        if (inputDateObj && (inputDateObj.getMonth() + 1) == month) {
             // check if min date is today
+
             /* creating the today object from current year, month and 
             date instead of Date.now() so that the time becomes zero 
-            and today's date can be selected with equality operator*/
+            and today's date can be compared using equality operator*/
             const temp = new Date()
             const todayObj = new Date(temp.getFullYear(), temp.getMonth(), temp.getDate())
-            if (inpDateObj.getTime() >= todayObj.getTime()) {
+            if (inputDateObj.getTime() >= todayObj.getTime()) {
                 console.log("yay")
                 return {
                     todayObj,
@@ -32,7 +36,7 @@ function isDateValid() {
         console.log("noo")
         return null;
     } else {
-        alert("Please enter date in MM/DD/YYYY format!")
+        alert("Please enter valid date in MM/DD/YYYY format!")
         return null;
     }
 }
@@ -45,12 +49,13 @@ function handleSubmit(event) {
     // Personal API Key for OpenWeatherMap API
     const geonamesKey = "&username=walkeknow";
     const geoNamesApi = "http://api.geonames.org/searchJSON?name_equals=";
-    const city = "Paris"
+    const city = "New York"
     // const city  = document.getElementById("city").value;
-    const geoNamesUrl = geoNamesApi + city + geonamesKey
+    const geoNamesUrl = encodeURI(geoNamesApi + city + geonamesKey);
     console.log(geoNamesUrl);
 
-    if (isDateValid()) {
+
+    if (isInputValid(city)) {
         // Calling functions
         getData(geoNamesUrl)
             .then(function (data) {
@@ -111,8 +116,8 @@ const updateUI = async (url = '') => {
 
         // Updating UI 
         const entry = serverData.entryData;
-        const temp = document.getElementById('inpDateObj');
-        temp.innerHTML = `<strong>inpDateObjerature:</strong> ${entry.inpDateObjerature}`;
+        const temp = document.getElementById('inputDateObj');
+        temp.innerHTML = `<strong>inputDateObjerature:</strong> ${entry.inputDateObjerature}`;
     } catch (error) {
         console.log("error", error);
     }
