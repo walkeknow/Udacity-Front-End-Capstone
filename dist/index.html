@@ -18,33 +18,38 @@
         <button id="generate" type="submit" onclick="Client.handleSubmit(event)">Get Info</button>
       </div>
       <div class="results">
-        <header id="results-title">Travel Info</header>
-        <div class="entry-holder">
-          <div id="days">
-            <h2>Days Left</h2>
-            <div id="countdown">21</div>
-          </div>
-          <div id="weather">
+        <h1>Travel Info</h1>
+        <div class="info-holder">
+          <div class="entry-holder">
+            <div id="days">
+              <h2>Days Left</h2>
+              <div id="countdown">21</div>
+            </div>
+            <div id="weather">
               <div class="weather-title">Weather:</div>
               <div class="info">Cloudy</div>
+            </div>
+            <div id="temp">
+              <div id="max-temp">
+                <h3>Max Temp</h3>
+                <div class="info">40</div>
+              </div>
+              <div id="min-temp">
+                <h3>Min Temp</h3>
+                <div class="info">20</div>
+              </div>
+              <div id="icon"></div>
+            </div>
           </div>
-          <div id="temp">
-            <div id="max-temp">
-              <h3>Max Temp</h3>
-              <div class="info">40</div>
-            </div>
-            <div id="min-temp">
-              <h3>Min Temp</h3>
-              <div class="info">20</div>
-            </div>
-            <div id="icon"></div>
+          <div class="image-holder">
+            <h1>City Name</h1>
+            <div id="city-image"></div>
           </div>
         </div>
       </div>
     </content>
-    <footer id="footer">Kewal Shah 2020</footer>
   </div>
-
+  <footer id="footer">Kewal Shah 2020</footer>
 <script src="main.js"></script></body>
 
 </html>

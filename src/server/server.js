@@ -9,6 +9,7 @@ const app = express();
 
 /* Dependencies */
 const bodyParser = require('body-parser');
+const fetch = require('node-fetch')
 
 /* Middleware*/
 
@@ -22,6 +23,12 @@ app.use(cors());
 
 // Initialize the main project folder
 app.use(express.static('dist'));
+
+// To allow CORS
+app.use(function (req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    next();
+})
 
 // Spin up the server
 const port = 8000;
@@ -40,17 +47,32 @@ app.get('/', function (req, res) {
 app.get('/all', getAll);
 
 // Callback function to complete GET '/all'
-function getAll(request, response) {
-    response.send(projectData);
+function getAll(req, res) {
+    res.send(projectData);
 }
 
 // Post Route
-app.post('/addEntry', addEntry);
+app.post('/addEntry', function (req, res) {
+    projectData["url"] = req.body.url;
+    res.send(projectData);
+});
 
-function addEntry(request, response) {
-    const entryData = {
-        temperature: `${request.body.temperature.toString()}°C`,
-        date: request.body.date,
+// Proxy Get route to for fetching image
+app.get('/getImage', function (req, res) {
+    getImage(projectData.url)
+    .then(function(data) {
+        const imageUrl = data.hits[0].webformatURL;
+        projectData["image"] = imageUrl;
+        res.send(projectData);
+    });
+})
+
+const getImage = async(url = '') => {
+    const resp = await fetch(url);
+    try {
+        imageData = await resp.json();
+        return imageData;
+    } catch (error) {
+        console.log('error', error);
     }
-    projectData["entryData"] = entryData;
 }
