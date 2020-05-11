@@ -63,6 +63,7 @@ app.post('/addCity', (req, res) => {
     res.send(projectData);
 });
 
+// Post route that adds weather data and returns endpoint to update UI
 app.post('/addWeather', addWeather);
 
 function addWeather (req, res) {
