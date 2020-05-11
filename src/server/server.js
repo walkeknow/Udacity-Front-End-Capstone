@@ -63,7 +63,9 @@ app.post('/addCity', (req, res) => {
     res.send(projectData);
 });
 
-app.post('/addWeather', (req, res) => {
+app.post('/addWeather', addWeather);
+
+function addWeather (req, res) {
     const weatherData = {
         minTemp: req.body.minTemp,
         maxTemp: req.body.maxTemp,
@@ -72,7 +74,7 @@ app.post('/addWeather', (req, res) => {
     }
     projectData["weather"] = weatherData;
     res.send(projectData);
-})
+}
 
 // Get route for fetching image data using node-fetch
 app.get('/getImage', (req, res) => {

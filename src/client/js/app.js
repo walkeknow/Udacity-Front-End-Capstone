@@ -53,7 +53,7 @@ function handleSubmit(event) {
     const inputDate = document.getElementById("date").value;
     const inputCity = document.getElementById("city").value;
     const days = isInputValid(inputCity, inputDate);
-    
+
     const city = encodeURI(`&q=${inputCity}`)
     // const city  = encodeURI(inputCity);
     const geoNamesUrl = geoNamesApi + city + geonamesKey;
@@ -187,6 +187,7 @@ const getCityData = async (urls = []) => {
 
 /* Function to GET Project Data */
 function updateUI(allData = {}) {
+    console.log(allData);
     const button = document.querySelector('button');
     const countdown = document.getElementById('countdown');
     const cityImage = document.getElementById('city-image');
@@ -197,7 +198,7 @@ function updateUI(allData = {}) {
     countdown.textContent = allData.daysLeft;
     city.textContent = allData.city;
 
-    if(allData.weather.weatherDesc === "No Idea!") {
+    if (allData.weather.weatherDesc === "No Idea!") {
         alert("Weather beyond 16 days cannot be predicted!")
     }
 
@@ -208,9 +209,10 @@ function updateUI(allData = {}) {
     weather.textContent = allData.weather.weatherDesc;
     maxTemp.textContent = allData.weather.maxTemp;
     minTemp.textContent = allData.weather.minTemp;
-    
+
     const allInfo = document.querySelector('.info-holder');
     allInfo.setAttribute("style", "visibility: visible");
 }
 
 export { handleSubmit }
+export { isInputValid }
