@@ -39,28 +39,36 @@ function listening() {
     console.log(`server running on port ${port}`);
 }
 
-app.get('/', function (req, res) {
+app.get('/', (req, res) => {
     res.sendFile('dist/index.html')
 })
 
-// Initialize all route with a callback function
-app.get('/all', getAll);
-
-// Callback function to complete GET '/all'
-function getAll(req, res) {
+// Get route for sending data endpoint
+app.get('/all', (req, res) => {
     res.send(projectData);
-}
+});
 
-// Post Route
-app.post('/addEntry', function (req, res) {
+// Post Routes
+app.post('/addCity', (req, res) => {
     projectData["url"] = req.body.url;
     res.send(projectData);
 });
 
-// Proxy Get route to for fetching image
-app.get('/getImage', function (req, res) {
+app.post('/addWeather', (req, res) => {
+    const weatherData = {
+        minTemp: req.body.minTemp,
+        maxTemp: req.body.maxTemp,
+        weatherDesc: req.body.weatherDesc,
+        weatherIcon: req.body.weatherIcon,
+    }
+    projectData["weather"] = weatherData;
+    res.send(projectData);
+})
+
+// Get route for fetching image data using node-fetch
+app.get('/getImage', (req, res) => {
     getImage(projectData.url)
-    .then(function(data) {
+    .then((data) => {
         const imageUrl = data.hits[0].webformatURL;
         projectData["image"] = imageUrl;
         res.send(projectData);

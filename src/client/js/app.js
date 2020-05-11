@@ -1,15 +1,13 @@
-function isInputValid(city = '') {
+function isInputValid(city = '', inputDate = '') {
     if (!city) {
         alert("Please enter city name!")
         return null;
     }
     // regex to verify date syntax
     const dateExp = /^([0-9]{2})\/([0-9]{2})\/([0-9]{4})[\s]*$/
-    const inpDate = "06/10/2020";
-    // const inpDate = document.getElementById("date").value;
-    if (dateExp.test(inpDate)) {
+    if (dateExp.test(inputDate)) {
         // check if entered date is valid (checking for Leap Years)
-        const matches = dateExp.exec(inpDate);
+        const matches = dateExp.exec(inputDate);
         const month = matches[1];
         const date = matches[2];
         const year = matches[3]
@@ -30,7 +28,11 @@ function isInputValid(city = '') {
                 const dayMilliseconds = 24 * 60 * 60 * 1000;
                 const daysLeft = (inputDateObj - todayObj) / dayMilliseconds;
                 console.log(daysLeft)
-                return daysLeft;
+                const days = {
+                    daysLeft,
+                    todaysDate: todayObj.getDate().toString(),
+                };
+                return days;
             }
         };
         console.log("noo")
@@ -57,30 +59,75 @@ function handleSubmit(event) {
     const pixabayApi = "https://pixabay.com/api/?image_type=photo";
     const pixabayUrl = pixabayApi + pixabayKey + city;
 
-    const daysLeft = isInputValid(city);
-    if (daysLeft !== null) {
+    const weatherbitKey = "&key=73623f7a09bd422e9a003e9bc34b8eb2";
+    const weatherbitApi = "https://api.weatherbit.io/v2.0/forecast/daily"
+
+    // const inputDate = document.getElementById("date").value;
+    const inputDate = "05/14/2020"
+
+    const days = isInputValid(city, inputDate);
+    if (days !== null) {
         // Calling functions
         const postUrl = {
             url: pixabayUrl
         }
-        postData('http://localhost:8000/addEntry', postUrl)
-            .then(function (data) {
+
+        postData('http://localhost:8000/addCity', postUrl)
+            .then((data) => {
                 const urls = [
                     geoNamesUrl,
                     data.url,
                 ]
                 getCityData(urls)
-                    .then(function (data) {
+                    .then((data) => {
                         console.log(data);
-                        const placeObj = {
-                            long: data.geoData.geonames[0].lng,
-                            lat: data.geoData.geonames[0].lat,
-                        }
-                        console.log(placeObj)
-                        postData('/addEntry', placeObj)
-                            .then(function () {
-                                updateUI('/all')
-                            });
+                        const lat = data.geoData.geonames[0].lat;
+                        const lon = data.geoData.geonames[0].lng;
+                        const weatherbitQuery = `?lat=${lat}&lon=${lon}`
+                        const weatherbitUrl = weatherbitApi + weatherbitQuery + weatherbitKey;
+                        getWeatherData(weatherbitUrl)
+                            .then((weatherData) => {
+                                console.log(weatherData);
+                                let maxTemp = null;
+                                let minTemp = null;
+                                let weatherDesc = null;
+                                let weatherIcon = null;
+                                let isDataStored = true;
+                                if (days.daysLeft < 16) {
+                                    let apiListItem = 0;
+                                    const apiDate = weatherData.data[0].valid_date;
+
+                                    /* If today's date does not match with first list
+                                    entry of API data, it means API data is behind by one
+                                    day */
+                                    console.log(days.todaysDate);
+                                    console.log(apiDate.slice(-2));
+                                    if (days.todaysDate !== apiDate.slice(-2)) {
+                                        apiListItem += 1;
+                                        if (days.daysLeft === 15) {
+                                            isDataStored = false;
+                                        }
+                                    }
+                                    if (isDataStored) {
+                                        const item = weatherData.data[apiListItem + days.daysLeft];
+                                        maxTemp = item.max_temp;
+                                        minTemp = item.min_temp;
+                                        weatherDesc = item.weather.description;
+                                        weatherIcon = item.weather.icon;
+                                    }
+                                }
+                                const weather = {
+                                    maxTemp,
+                                    minTemp,
+                                    weatherDesc,
+                                    weatherIcon,
+                                }
+                                postData('/addWeather', weather)
+                                    .then(function (allData) {
+                                        console.log(allData);
+                                        updateUI()
+                                    });
+                            })
                     }, (error) => {
                         // Alert user if promise is rejected due to invalid Zipcode
                         alert("Sorry! Failed to find city details");
@@ -89,7 +136,38 @@ function handleSubmit(event) {
     }
 }
 
-/* Function to GET Web API Data*/
+/* Function to POST data to Express server*/
+const postData = async (url = '', data = {}) => {
+    const response = await fetch(url, {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    });
+
+    try {
+        const responseData = await response.json();
+        return responseData;
+    } catch (error) {
+        console.log('error', error);
+    }
+}
+
+/* Function to weather*/
+const getWeatherData = async (url = '') => {
+    const weatherResponse = await fetch(url);
+    try {
+        const weatherData = await weatherResponse.json();
+        return weatherData;
+    } catch (error) {
+        console.log("error: ", error);
+        throw error;
+    }
+}
+
+/* Function to GET Coordinates and Image Data*/
 const getCityData = async (urls = []) => {
     const geoResponse = await fetch(urls[0]);
 
@@ -109,39 +187,9 @@ const getCityData = async (urls = []) => {
     }
 }
 
-/* Function to POST data */
-const postData = async (url = '', data = {}) => {
-    const response = await fetch(url, {
-        method: 'POST',
-        credentials: 'same-origin',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-    });
-
-    try {
-        const responseData = await response.json();
-        return responseData;
-    } catch (error) {
-        console.log('error', error);
-    }
-}
-
 /* Function to GET Project Data */
-const updateUI = async (url = '') => {
-    const response = await fetch(url);
-    try {
-        const serverData = await response.json();
-
-        // Updating UI 
-        const entry = serverData.entryData;
-        const temp = document.getElementById('inputDateObj');
-        temp.innerHTML = `<strong>inputDateObjerature:</strong> ${entry.inputDateObjerature}`;
-    } catch (error) {
-        console.log("error", error);
-    }
+function updateUI() {
+    console.log("Done!")
 }
-
 
 export { handleSubmit }
