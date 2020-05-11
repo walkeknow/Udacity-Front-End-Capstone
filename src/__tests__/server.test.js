@@ -22,7 +22,7 @@ test('checks whether project endpoint is constructed properly', () => {
         }
     }
     const res = null;
-    
+
     expect(addWeather(req, res)).toEqual(
         expect.objectContaining(expectedProjectData),
     );

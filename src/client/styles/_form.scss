@@ -27,6 +27,10 @@ input {
     padding-left: 10px;
     padding-right: 10px;
 
+    &:hover {
+        border: 1px solid;
+    }
+
     &::placeholder {
         /* Firefox, Chrome, Opera */
         @include placeholder;

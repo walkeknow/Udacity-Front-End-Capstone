@@ -187,7 +187,6 @@ const getCityData = async (urls = []) => {
 
 /* Function to GET Project Data */
 function updateUI(allData = {}) {
-    console.log(allData);
     const button = document.querySelector('button');
     const countdown = document.getElementById('countdown');
     const cityImage = document.getElementById('city-image');
