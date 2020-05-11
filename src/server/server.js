@@ -9,7 +9,8 @@ const app = express();
 
 /* Dependencies */
 const bodyParser = require('body-parser');
-const fetch = require('node-fetch')
+const fetch = require('node-fetch');
+const path = require('path');
 
 /* Middleware*/
 
@@ -23,6 +24,9 @@ app.use(cors());
 
 // Initialize the main project folder
 app.use(express.static('dist'));
+
+// Initalize weather icon folder
+app.use(express.static('icons'));
 
 // To allow CORS
 app.use(function (req, res, next) {
@@ -50,7 +54,12 @@ app.get('/all', (req, res) => {
 
 // Post Routes
 app.post('/addCity', (req, res) => {
-    projectData["url"] = req.body.url;
+    projectData =  {
+        apiUrl: req.body.url,
+        daysLeft: req.body.daysLeft,
+        city: req.body.city,
+    }
+
     res.send(projectData);
 });
 
@@ -67,11 +76,15 @@ app.post('/addWeather', (req, res) => {
 
 // Get route for fetching image data using node-fetch
 app.get('/getImage', (req, res) => {
-    getImage(projectData.url)
+    getImage(projectData.apiUrl)
     .then((data) => {
-        const imageUrl = data.hits[0].webformatURL;
-        projectData["image"] = imageUrl;
-        res.send(projectData);
+        try {
+            const imageUrl = data.hits[0].webformatURL;
+            projectData["image"] = imageUrl;
+            res.send(projectData);
+        } catch (error) {
+            console.log(error);
+        }
     });
 })
 

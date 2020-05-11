@@ -1,5 +1,5 @@
-function isInputValid(city = '', inputDate = '') {
-    if (!city) {
+function isInputValid(inputCity = '', inputDate = '') {
+    if (inputCity === "") {
         alert("Please enter city name!")
         return null;
     }
@@ -27,7 +27,6 @@ function isInputValid(city = '', inputDate = '') {
             if (inputDateObj.getTime() >= todayObj.getTime()) {
                 const dayMilliseconds = 24 * 60 * 60 * 1000;
                 const daysLeft = (inputDateObj - todayObj) / dayMilliseconds;
-                console.log(daysLeft)
                 const days = {
                     daysLeft,
                     todaysDate: todayObj.getDate().toString(),
@@ -35,7 +34,6 @@ function isInputValid(city = '', inputDate = '') {
                 return days;
             }
         };
-        console.log("noo")
         return null;
     } else {
         alert("Please enter valid date in MM/DD/YYYY format!")
@@ -51,8 +49,13 @@ function handleSubmit(event) {
     // Personal API Keys
     const geonamesKey = "&username=walkeknow";
     const geoNamesApi = "http://api.geonames.org/searchJSON?name_equals=";
-    const city = encodeURI("&q=New York")
-    // const city  = encodeURI(document.getElementById("city").value);
+    // const inputCity = "New York"
+    const inputDate = document.getElementById("date").value;
+    const inputCity = document.getElementById("city").value;
+    const days = isInputValid(inputCity, inputDate);
+    
+    const city = encodeURI(`&q=${inputCity}`)
+    // const city  = encodeURI(inputCity);
     const geoNamesUrl = geoNamesApi + city + geonamesKey;
 
     const pixabayKey = "&key=16476881-b83f87e435d7a25d2a703cca9";
@@ -62,17 +65,19 @@ function handleSubmit(event) {
     const weatherbitKey = "&key=73623f7a09bd422e9a003e9bc34b8eb2";
     const weatherbitApi = "https://api.weatherbit.io/v2.0/forecast/daily"
 
-    // const inputDate = document.getElementById("date").value;
-    const inputDate = "05/14/2020"
+    // const inputDate = "05/14/2020"
 
-    const days = isInputValid(city, inputDate);
+
     if (days !== null) {
         // Calling functions
-        const postUrl = {
-            url: pixabayUrl
+        const button = document.querySelector('button');
+        button.setAttribute("disabled", "true");
+        const sendData = {
+            url: pixabayUrl,
+            city: inputCity,
+            daysLeft: days.daysLeft,
         }
-
-        postData('http://localhost:8000/addCity', postUrl)
+        postData('http://localhost:8000/addCity', sendData)
             .then((data) => {
                 const urls = [
                     geoNamesUrl,
@@ -80,17 +85,15 @@ function handleSubmit(event) {
                 ]
                 getCityData(urls)
                     .then((data) => {
-                        console.log(data);
                         const lat = data.geoData.geonames[0].lat;
                         const lon = data.geoData.geonames[0].lng;
                         const weatherbitQuery = `?lat=${lat}&lon=${lon}`
                         const weatherbitUrl = weatherbitApi + weatherbitQuery + weatherbitKey;
                         getWeatherData(weatherbitUrl)
                             .then((weatherData) => {
-                                console.log(weatherData);
-                                let maxTemp = null;
-                                let minTemp = null;
-                                let weatherDesc = null;
+                                let maxTemp = "N/A";
+                                let minTemp = "N/A";
+                                let weatherDesc = "No Idea!";
                                 let weatherIcon = null;
                                 let isDataStored = true;
                                 if (days.daysLeft < 16) {
@@ -100,8 +103,6 @@ function handleSubmit(event) {
                                     /* If today's date does not match with first list
                                     entry of API data, it means API data is behind by one
                                     day */
-                                    console.log(days.todaysDate);
-                                    console.log(apiDate.slice(-2));
                                     if (days.todaysDate !== apiDate.slice(-2)) {
                                         apiListItem += 1;
                                         if (days.daysLeft === 15) {
@@ -123,10 +124,7 @@ function handleSubmit(event) {
                                     weatherIcon,
                                 }
                                 postData('/addWeather', weather)
-                                    .then(function (allData) {
-                                        console.log(allData);
-                                        updateUI()
-                                    });
+                                    .then((allData) => updateUI(allData));
                             })
                     }, (error) => {
                         // Alert user if promise is rejected due to invalid Zipcode
@@ -188,8 +186,31 @@ const getCityData = async (urls = []) => {
 }
 
 /* Function to GET Project Data */
-function updateUI() {
-    console.log("Done!")
+function updateUI(allData = {}) {
+    const button = document.querySelector('button');
+    const countdown = document.getElementById('countdown');
+    const cityImage = document.getElementById('city-image');
+    const city = document.querySelector('.image-holder').querySelector('h1');
+    const icon = document.getElementById('icon');
+    cityImage.setAttribute("style", `background-image: url(${allData.image})`);
+    button.removeAttribute('disabled');
+    countdown.textContent = allData.daysLeft;
+    city.textContent = allData.city;
+
+    if(allData.weather.weatherDesc === "No Idea!") {
+        alert("Weather beyond 16 days cannot be predicted!")
+    }
+
+    const weather = document.querySelector('#weather').querySelector('.info');
+    const maxTemp = document.querySelector('#max-temp').querySelector('.info');
+    const minTemp = document.querySelector('#min-temp').querySelector('.info');
+    icon.setAttribute("style", `background-image: url('http://localhost:8000/${allData.weather.weatherIcon}.png')`);
+    weather.textContent = allData.weather.weatherDesc;
+    maxTemp.textContent = allData.weather.maxTemp;
+    minTemp.textContent = allData.weather.minTemp;
+    
+    const allInfo = document.querySelector('.info-holder');
+    allInfo.setAttribute("style", "visibility: visible");
 }
 
 export { handleSubmit }

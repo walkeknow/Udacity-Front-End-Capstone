@@ -40,20 +40,8 @@ module.exports = {
                     }
                 ]
             },
-            {
-                test: /\.png$/,
-                use: [
-                    {
-                        loader: 'file-loader',
-                        options: {
-                            name: '[name].[ext]',
-                            outputPath: 'images/'
-                        }
-                    }
-                ]
-            }
         ]
-},
+    },
     plugins: [
         new HtmlWebpackPlugin({
             template: './src/client/views/index.html',

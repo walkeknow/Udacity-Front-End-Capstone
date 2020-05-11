@@ -58,11 +58,13 @@ button {
     &:hover {
         cursor: pointer;
     }
-
     &:active {
         opacity: 0.8;
     }
     &:focus {
         outline: none;
+    }
+    &:disabled {
+        opacity: 0.8;
     }
 }
