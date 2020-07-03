@@ -1,7 +1,7 @@
 # Trip Top
 
 ## Overview
-This is an asynchronous travel web app that allows the user to enter a place name and date for a trip and uses API data to display weather data of the place along with its image.  
+An asynchronous web app using Node.js and Express allowing users to plan a trip to a place based on its forecasted weather data 
 
 ## Features
 * Sets up server side GET & POST routes using Express
