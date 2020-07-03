@@ -1,7 +1,7 @@
 # Trip Top
 
 ## Overview
-An asynchronous web app using Node.js and Express allowing users to plan a trip to a place based on its forecasted weather data 
+An asynchronous web app built using Node.js which allows users to plan a trip to a place based on its forecasted weather data 
 
 ## Features
 * Sets up server side GET & POST routes using Express
